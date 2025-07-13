@@ -1,7 +1,6 @@
 ﻿using Bultenly.Domain.Entities;
 using Bultenly.Sql.EntityConfig;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 
 namespace Bultenly.Sql.Context
 {
@@ -23,13 +22,6 @@ namespace Bultenly.Sql.Context
             modelBuilder.ApplyConfiguration(new ArticleConfiguration());
             modelBuilder.ApplyConfiguration(new NotificationConfiguration());
             base.OnModelCreating(modelBuilder);
-        }
-
-        public static AppContext Create(string connectionString)
-        {
-            var optionsBuilder = new DbContextOptionsBuilder<AppContext>();
-            optionsBuilder.UseSqlServer(connectionString);
-            return new AppContext(optionsBuilder.Options);
         }
     }
 }
